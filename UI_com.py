@@ -309,7 +309,7 @@ def enablePredBtn(filepath_init,filepath_data):
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
  
 
-from prediction import predict
+#from prediction import predict
 import zipfile
 import time
 from zipfile import ZipFile
@@ -324,7 +324,8 @@ from zipfile import ZipFile
     
 )
 def predictMask(Thre,n_clicks,imageType,filePath):
-  
+    return html.Label([html.Strong("This is a demonstration server and the prediction module is not available for use. To utilize the prediction functionality, please run SpheroScan on your local machine.")],style={"text-align": "Justify"}),None
+
     if filePath!={} and n_clicks:   
         try: 
             zippedFolder = [ f for f in os.listdir(filePath) if f.endswith('.zip')][0] 
@@ -335,7 +336,7 @@ def predictMask(Thre,n_clicks,imageType,filePath):
             os.remove(filePath+"/"+zippedFolder)
             filePath=filePath+"/"+[ f for f in os.listdir(filePath) if not f.startswith(('.',"_"))][0]
 
-            predict(filePath,Thre,imageType) 
+            #predict(filePath,Thre,imageType) 
             time.sleep(4)
 
             return  downPredRes,filePath
