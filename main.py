@@ -73,7 +73,7 @@ tabs_main = dbc.Card(
                 dbc.Tab(label="About", tab_id="about"),
             ],
             id="tabs_main",
-            active_tab="pred", 
+            active_tab="visu", 
             #card=True,
         ),style={"border-color":"black"}),
         dbc.CardBody(html.P(id="content_main", className="mt-3")),
