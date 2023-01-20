@@ -68,8 +68,9 @@ tabs_main = dbc.Card(
      dbc.CardHeader(
         dbc.Tabs(
             [
-                dbc.Tab(label="Prediction", tab_id="pred"),
+                
                 dbc.Tab(label="Visualization", tab_id="visu"),
+                dbc.Tab(label="Prediction", tab_id="pred"),
                 dbc.Tab(label="About", tab_id="about"),
             ],
             id="tabs_main",
