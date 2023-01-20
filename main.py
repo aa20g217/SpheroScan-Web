@@ -119,8 +119,9 @@ def switch_tab(at):
 
 from waitress import serve
 import webbrowser as web
-web.open_new_tab('http://127.0.0.1:4549/')
+server = app.server
+#web.open_new_tab('http://127.0.0.1:4549/')
 
-if __name__ == '__main__':
-    app.run_server(host='127.0.0.1', port=4549,debug=False,dev_tools_hot_reload=False)
+#if __name__ == '__main__':
+ #   app.run_server(host='127.0.0.1', port=4549,debug=False,dev_tools_hot_reload=False)
     
