@@ -2,19 +2,15 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Sep  14 17:17:42 2022
-
 @author: akshay
 """
-
 from app import app
 from dash import dcc,html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-
 from UI_com import visualization,pred
 from pathlib import Path
 from zipfile import ZipFile
-
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    
 navigation_bar = dbc.Navbar(
     dbc.Container(        [            
@@ -29,7 +25,6 @@ navigation_bar = dbc.Navbar(
    color="black", 
    dark=True,style={"border-color": "white"}
 )
-
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 about=dbc.Card([html.Div([
     dbc.Row(html.H6("SpheroScan",style={"font-weight": "bold","color":"black"})),
@@ -56,12 +51,8 @@ about=dbc.Card([html.Div([
     dbc.Row(html.H6("Citation",style={"font-weight": "bold","color":"black"})),
     html.Div(["If SpheroScan helps you in any way, please cite the SpheroScan article:"]),
     html.Ul([html.Li(html.A("", href="", target="_blank"))]),
-
     ],style={"margin-left": "10px","margin-right": "10px","margin-top": "10px","font-size": "14px"})],
     style={"margin-left": "5px","margin-right": "5px","margin-top": "10px"})
-
-
-
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    
 tabs_main = dbc.Card(
     [
@@ -73,7 +64,7 @@ tabs_main = dbc.Card(
                 dbc.Tab(label="About", tab_id="about"),
             ],
             id="tabs_main",
-            active_tab="visu",  
+            active_tab="visu", 
             #card=True,
         ),style={"border-color":"black"}),
         dbc.CardBody(html.P(id="content_main", className="mt-3")),
@@ -81,14 +72,12 @@ tabs_main = dbc.Card(
                   html.A("SpheroScan.", href="https://github.com/FunctionalUrology/SpheroScan.git", target="_blank")],
                  style={"margin-left": "10px","font-size": "11px"}),
     ],color="dark", outline=True,    )
-
  
 app.layout = html.Div([navigation_bar,
                        tabs_main, 
                        dcc.Store(id='filepath_init',data={}),
                        dcc.Store(id='filepath_data',data={}),
                       ]) 
-
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    
 @app.callback(Output("content_main", "children"), [Input("tabs_main", "active_tab")])
 def switch_tab(at):
@@ -99,14 +88,9 @@ def switch_tab(at):
     elif at == "about":
         return about 
     return html.P("This shouldn't ever be displayed. Please contact the developer.")
-
-
-
 from waitress import serve
 import webbrowser as web
 server = app.server
 #web.open_new_tab('http://127.0.0.1:4549/')
-
 #if __name__ == '__main__':
  #   app.run_server(host='127.0.0.1', port=4549,debug=False,dev_tools_hot_reload=False)
-    
